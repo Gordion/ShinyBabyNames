@@ -2,10 +2,10 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 
+data <- read.csv("BabyNamesAll.csv"), header=TRUE)
+
 output$distPlot <- renderPlot({
-  data <- read.csv(textConnection(getURL(
-    "https://s3-eu-west-1.amazonaws.com/gbbuckettest/BabyNamesAll.csv"
-  )), header=TRUE)
+   
   data %>%
   distinct(Name,Year, Sex) %>%
   count(Year, Sex) %>%
